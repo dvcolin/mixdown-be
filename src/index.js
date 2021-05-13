@@ -1,23 +1,4 @@
-const { ApolloServer, gql } = require('apollo-server');
-
-const typeDefs = gql`
-  type Query {
-    hello: String
-  }
-`;
-
-const resolvers = {
-  Query: {
-    hello: () => {
-      return 'Hello world!';
-    },
-  },
-};
-
-const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-});
+const server = require('./graphql/server');
 
 server.listen().then(({ url }) => {
   console.log(`\n*** Server listening at ${url} ***\n`);
