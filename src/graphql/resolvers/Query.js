@@ -1,10 +1,10 @@
 const { users, tracks } = require('../../dummy-data');
 
 const Query = {
-  users() {
+  users(parent, args, context, info) {
     return users;
   },
-  tracks() {
+  tracks(parent, args, context, info) {
     return tracks;
   },
 };

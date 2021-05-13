@@ -13,12 +13,16 @@ const typeDefs = gql`
     username: String!
     profileUrl: String!
     uploadedTracks: [Track!]!
+    likedTracks: [Track!]!
+    repostedTracks: [Track!]!
   }
 
   type Track {
     id: ID!
     uploadedBy: User!
     title: String!
+    likedBy: [User!]!
+    repostedBy: [User!]!
   }
 `;
 
