@@ -12,9 +12,14 @@ const typeDefs = gql`
     password: String!
     username: String!
     profileUrl: String!
+    role: UserRole!
     uploadedTracks: [Track!]!
     likedTracks: [Track!]!
     repostedTracks: [Track!]!
+    followers: [User!]!
+    following: [User!]!
+    numFollowers: Int!
+    numFollowing: Int!
   }
 
   type Track {
@@ -23,6 +28,12 @@ const typeDefs = gql`
     title: String!
     likedBy: [User!]!
     repostedBy: [User!]!
+  }
+
+  enum UserRole {
+    GENERAL
+    ARTIST
+    RECORD_LABEL
   }
 `;
 

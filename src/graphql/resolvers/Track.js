@@ -10,6 +10,7 @@ const Track = {
       (userTrack) =>
         userTrack.trackId === parent.id && userTrack.action === 'LIKE'
     );
+
     return filteredUserTracks.map((userTrack) =>
       users.find((user) => user.id === userTrack.userId)
     );
@@ -19,6 +20,7 @@ const Track = {
     const filteredUserTracks = userTracks.filter(
       (userTrack) => userTrack.id === parent.id && userTrack.action === 'REPOST'
     );
+
     return filteredUserTracks.map((userTrack) =>
       users.find((user) => user.id === userTrack.userId)
     );

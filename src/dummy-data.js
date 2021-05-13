@@ -5,6 +5,9 @@ const users = [
     password: 'password1',
     username: 'CALCIUM',
     profileUrl: 'calcium-dubstep',
+    role: 'ARTIST',
+    numFollowers: 8,
+    numFollowing: 5,
   },
   {
     id: '2',
@@ -12,6 +15,9 @@ const users = [
     password: 'password2',
     username: 'Aweminus',
     profileUrl: 'aweminus-music',
+    role: 'ARTIST',
+    numFollowers: 8,
+    numFollowing: 5,
   },
   {
     id: '3',
@@ -19,6 +25,9 @@ const users = [
     password: 'password3',
     username: 'Leotrix',
     profileUrl: 'leotrix-dubstep',
+    role: 'ARTIST',
+    numFollowers: 8,
+    numFollowing: 5,
   },
 ];
 
@@ -94,8 +103,27 @@ const userTracks = [
   },
 ];
 
+const relatedUsers = [
+  {
+    id: '1',
+    userId: '1',
+    followedUserId: '2',
+  },
+  {
+    id: '2',
+    userId: '1',
+    followedUserId: '3',
+  },
+  {
+    id: '3',
+    userId: '2',
+    followedUserId: '1',
+  },
+];
+
 module.exports = {
   users,
   tracks,
   userTracks,
+  relatedUsers,
 };
