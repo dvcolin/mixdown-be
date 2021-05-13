@@ -36,31 +36,43 @@ const tracks = [
     id: '1',
     uploadedBy: '1',
     title: 'Calcium - Blessed',
+    numLikes: 10200,
+    numReposts: 624,
   },
   {
     id: '2',
     uploadedBy: '1',
     title: 'Exquisite',
+    numLikes: 10200,
+    numReposts: 624,
   },
   {
     id: '3',
     uploadedBy: '2',
     title: 'Aweminus - UGHH',
+    numLikes: 10200,
+    numReposts: 624,
   },
   {
     id: '4',
     uploadedBy: '2',
     title: 'Wonton Bass',
+    numLikes: 10200,
+    numReposts: 624,
   },
   {
     id: '5',
     uploadedBy: '3',
     title: 'Sight',
+    numLikes: 10200,
+    numReposts: 624,
   },
   {
     id: '6',
     uploadedBy: '3',
     title: 'Play With Fire',
+    numLikes: 10200,
+    numReposts: 624,
   },
 ];
 

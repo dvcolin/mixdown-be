@@ -28,6 +28,8 @@ const typeDefs = gql`
     title: String!
     likedBy: [User!]!
     repostedBy: [User!]!
+    numLikes: Int!
+    numReposts: Int!
   }
 
   enum UserRole {
