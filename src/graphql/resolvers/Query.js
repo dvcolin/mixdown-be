@@ -1,6 +1,11 @@
+const { users, tracks } = require('../../dummy-data');
+
 const Query = {
-  hello: () => {
-    return 'Hello world!';
+  users() {
+    return users;
+  },
+  tracks() {
+    return tracks;
   },
 };
 
