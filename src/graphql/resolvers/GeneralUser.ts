@@ -1,11 +1,7 @@
-import { UserResolvers } from '../types';
+import { GeneralUserResolvers } from '../types';
 import { users, tracks, userTracks, relatedUsers } from '../../db';
 
-const User: UserResolvers = {
-  uploadedTracks(parent, args, context, info) {
-    return tracks.filter((track) => track.uploadedBy === parent.id);
-  },
-
+const GeneralUser: GeneralUserResolvers = {
   likedTracks(parent, args, context, info) {
     const filteredUserTracks = userTracks.filter(
       (userTrack) =>
@@ -49,4 +45,4 @@ const User: UserResolvers = {
   },
 };
 
-export default User;
+export default GeneralUser;

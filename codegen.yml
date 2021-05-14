@@ -4,7 +4,7 @@ generates:
     config:
       useIndexSignature: true
       mappers:
-        User: ./src/models/types#UserModel
+        GeneralUserFields: ./src/models/types#UserModel
         Track: ./src/models/types#TrackModel
     plugins:
       - typescript

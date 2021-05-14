@@ -2,10 +2,30 @@ import { QueryResolvers } from '../types';
 import { users, tracks } from '../../db';
 
 const Query: QueryResolvers = {
-  users(parent, args, context, info) {
+  allUsers(parent, args, context, info) {
+    const {
+      input: { queryString, role },
+    } = args;
+
+    if (queryString || role) {
+      let filteredUsers = [...users];
+
+      if (queryString) {
+        filteredUsers = filteredUsers.filter((user) =>
+          user.username.toLowerCase().includes(queryString.toLowerCase())
+        );
+      }
+
+      if (role) {
+        filteredUsers = filteredUsers.filter((user) => user.role === role);
+      }
+
+      return filteredUsers;
+    }
+
     return users;
   },
-  tracks(parent, args, context, info) {
+  allTracks(parent, args, context, info) {
     return tracks;
   },
 };

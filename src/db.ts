@@ -12,7 +12,7 @@ export const users: UserModel[] = [
     password: 'password1',
     username: 'CALCIUM',
     profileUrl: 'calcium-dubstep',
-    role: 'ARTIST',
+    role: 'GENERAL',
     numFollowers: 8,
     numFollowing: 5,
   },
