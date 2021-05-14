@@ -6,6 +6,11 @@ const typeDefs = gql`
     tracks: [Track!]!
   }
 
+  type Mutation {
+    createUser(input: CreateUserInput!): User!
+    createTrack(input: CreateTrackInput!): Track!
+  }
+
   type User {
     id: ID!
     email: String!
@@ -36,6 +41,19 @@ const typeDefs = gql`
     GENERAL
     ARTIST
     RECORD_LABEL
+  }
+
+  input CreateUserInput {
+    email: String!
+    password: String!
+    username: String!
+    profileUrl: String!
+    role: UserRole!
+  }
+
+  input CreateTrackInput {
+    uploadedBy: ID!
+    title: String!
   }
 `;
 
