@@ -1,6 +1,7 @@
-const { users, tracks } = require('../../dummy-data');
+import { MutationResolvers } from '../types';
+import { users, tracks } from '../../db';
 
-const Mutation = {
+const Mutation: MutationResolvers = {
   createUser(parent, args, context, info) {
     const {
       input: { email, password, username, profileUrl, role },
@@ -13,17 +14,13 @@ const Mutation = {
       username,
       profileUrl,
       role,
-      likedTracks: [],
-      repostedTracks: [],
-      followers: [],
-      following: [],
       numFollowers: 0,
       numFollowing: 0,
     };
 
     users.push(newUser);
 
-    return users.find((user) => user.id === newUser.id);
+    return newUser;
   },
 
   createTrack(parent, args, context, info) {
@@ -35,16 +32,14 @@ const Mutation = {
       id: (tracks.length + 1).toString(),
       uploadedBy,
       title,
-      likedBy: [],
-      repostedBy: [],
       numLikes: 0,
       numReposts: 0,
     };
 
     tracks.push(newTrack);
 
-    return tracks.find((track) => track.id === newTrack.id);
+    return newTrack;
   },
 };
 
-module.exports = Mutation;
+export default Mutation;

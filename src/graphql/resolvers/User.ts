@@ -1,6 +1,7 @@
-const { users, tracks, userTracks, relatedUsers } = require('../../dummy-data');
+import { UserResolvers } from '../types';
+import { users, tracks, userTracks, relatedUsers } from '../../db';
 
-const User = {
+const User: UserResolvers = {
   uploadedTracks(parent, args, context, info) {
     return tracks.filter((track) => track.uploadedBy === parent.id);
   },
@@ -48,4 +49,4 @@ const User = {
   },
 };
 
-module.exports = User;
+export default User;

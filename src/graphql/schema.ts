@@ -1,6 +1,6 @@
-const { gql } = require('apollo-server');
+import { gql } from 'apollo-server';
 
-const typeDefs = gql`
+const schema = gql`
   type Query {
     users: [User!]!
     tracks: [Track!]!
@@ -57,4 +57,4 @@ const typeDefs = gql`
   }
 `;
 
-module.exports = typeDefs;
+export default schema;

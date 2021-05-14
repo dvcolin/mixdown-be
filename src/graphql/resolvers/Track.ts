@@ -1,6 +1,7 @@
-const { users, userTracks } = require('../../dummy-data');
+import { TrackResolvers } from '../types';
+import { users, userTracks } from '../../db';
 
-const Track = {
+const Track: TrackResolvers = {
   uploadedBy(parent, args, context, info) {
     return users.find((user) => user.id === parent.uploadedBy);
   },
@@ -27,4 +28,4 @@ const Track = {
   },
 };
 
-module.exports = Track;
+export default Track;

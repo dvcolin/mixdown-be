@@ -1,4 +1,11 @@
-const users = [
+import {
+  UserModel,
+  TrackModel,
+  UserTrackModel,
+  RelatedUserModel,
+} from './models/types';
+
+export const users: UserModel[] = [
   {
     id: '1',
     email: 'user1@email.com',
@@ -31,7 +38,7 @@ const users = [
   },
 ];
 
-const tracks = [
+export const tracks: TrackModel[] = [
   {
     id: '1',
     uploadedBy: '1',
@@ -76,7 +83,7 @@ const tracks = [
   },
 ];
 
-const userTracks = [
+export const userTracks: UserTrackModel[] = [
   {
     id: '1',
     userId: '1',
@@ -115,7 +122,7 @@ const userTracks = [
   },
 ];
 
-const relatedUsers = [
+export const relatedUsers: RelatedUserModel[] = [
   {
     id: '1',
     userId: '1',
@@ -132,10 +139,3 @@ const relatedUsers = [
     followedUserId: '1',
   },
 ];
-
-module.exports = {
-  users,
-  tracks,
-  userTracks,
-  relatedUsers,
-};

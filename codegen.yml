@@ -1,0 +1,11 @@
+schema: src/graphql/schema.ts
+generates:
+  ./src/graphql/types.d.ts:
+    config:
+      useIndexSignature: true
+      mappers:
+        User: ./src/models/types#UserModel
+        Track: ./src/models/types#TrackModel
+    plugins:
+      - typescript
+      - typescript-resolvers
