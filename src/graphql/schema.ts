@@ -26,7 +26,19 @@ const schema = gql`
     numFollowing: Int!
   }
 
-  interface ArtistFields {
+  interface ArtistFields implements GeneralUserFields {
+    id: ID!
+    email: String!
+    password: String!
+    username: String!
+    profileUrl: String!
+    role: UserRole!
+    likedTracks: [Track!]!
+    repostedTracks: [Track!]!
+    followers: [GeneralUserFields!]!
+    following: [GeneralUserFields!]!
+    numFollowers: Int!
+    numFollowing: Int!
     uploadedTracks: [Track!]!
   }
 
@@ -79,7 +91,7 @@ const schema = gql`
 
   type Track {
     id: ID!
-    uploadedBy: GeneralUserFields!
+    uploadedBy: ArtistFields!
     title: String!
     likedBy: [GeneralUserFields!]!
     repostedBy: [GeneralUserFields!]!

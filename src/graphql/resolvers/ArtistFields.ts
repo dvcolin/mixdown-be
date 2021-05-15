@@ -1,3 +1,4 @@
+import { ApolloError } from 'apollo-server';
 import { ArtistFieldsResolvers } from '../types';
 
 const ArtistFields: ArtistFieldsResolvers = {
@@ -8,7 +9,10 @@ const ArtistFields: ArtistFieldsResolvers = {
       case 'RECORD_LABEL':
         return 'RecordLabel';
       default:
-        return null;
+        throw new ApolloError(
+          'Validation failed.',
+          'GRAPHQL_VALIDATION_FAILED'
+        );
     }
   },
 };

@@ -5,6 +5,7 @@ generates:
       useIndexSignature: true
       mappers:
         GeneralUserFields: ./src/models/types#UserModel
+        ArtistFields: ./src/models/type#UserModel
         Track: ./src/models/types#TrackModel
     plugins:
       - typescript

@@ -1,3 +1,4 @@
+import { ApolloError } from 'apollo-server';
 import { GeneralUserFieldsResolvers } from '../types';
 
 const GeneralUserFields: GeneralUserFieldsResolvers = {
@@ -10,7 +11,10 @@ const GeneralUserFields: GeneralUserFieldsResolvers = {
       case 'RECORD_LABEL':
         return 'RecordLabel';
       default:
-        return null;
+        throw new ApolloError(
+          'Validation failed.',
+          'GRAPHQL_VALIDATION_FAILED'
+        );
     }
   },
 };

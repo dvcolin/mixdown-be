@@ -1,5 +1,6 @@
 import { GraphQLResolveInfo } from 'graphql';
 import { UserModel, TrackModel } from './src/models/types';
+import { UserModel } from './src/models/type';
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
@@ -42,6 +43,18 @@ export type GeneralUserFields = {
 };
 
 export type ArtistFields = {
+  id: Scalars['ID'];
+  email: Scalars['String'];
+  password: Scalars['String'];
+  username: Scalars['String'];
+  profileUrl: Scalars['String'];
+  role: UserRole;
+  likedTracks: Array<Track>;
+  repostedTracks: Array<Track>;
+  followers: Array<GeneralUserFields>;
+  following: Array<GeneralUserFields>;
+  numFollowers: Scalars['Int'];
+  numFollowing: Scalars['Int'];
   uploadedTracks: Array<Track>;
 };
 
@@ -97,7 +110,7 @@ export type MutationCreateTrackArgs = {
 export type Track = {
   __typename?: 'Track';
   id: Scalars['ID'];
-  uploadedBy: GeneralUserFields;
+  uploadedBy: ArtistFields;
   title: Scalars['String'];
   likedBy: Array<GeneralUserFields>;
   repostedBy: Array<GeneralUserFields>;
@@ -230,7 +243,7 @@ export type ResolversTypes = ResolversObject<{
   ID: ResolverTypeWrapper<Scalars['ID']>;
   String: ResolverTypeWrapper<Scalars['String']>;
   Int: ResolverTypeWrapper<Scalars['Int']>;
-  ArtistFields: ResolversTypes['Artist'] | ResolversTypes['RecordLabel'];
+  ArtistFields: ResolverTypeWrapper<UserModel>;
   GeneralUser: ResolverTypeWrapper<Omit<GeneralUser, 'likedTracks' | 'repostedTracks' | 'followers' | 'following'> & { likedTracks: Array<ResolversTypes['Track']>, repostedTracks: Array<ResolversTypes['Track']>, followers: Array<ResolversTypes['GeneralUserFields']>, following: Array<ResolversTypes['GeneralUserFields']> }>;
   Artist: ResolverTypeWrapper<Omit<Artist, 'likedTracks' | 'repostedTracks' | 'followers' | 'following' | 'uploadedTracks'> & { likedTracks: Array<ResolversTypes['Track']>, repostedTracks: Array<ResolversTypes['Track']>, followers: Array<ResolversTypes['GeneralUserFields']>, following: Array<ResolversTypes['GeneralUserFields']>, uploadedTracks: Array<ResolversTypes['Track']> }>;
   Mutation: ResolverTypeWrapper<{}>;
@@ -250,7 +263,7 @@ export type ResolversParentTypes = ResolversObject<{
   ID: Scalars['ID'];
   String: Scalars['String'];
   Int: Scalars['Int'];
-  ArtistFields: ResolversParentTypes['Artist'] | ResolversParentTypes['RecordLabel'];
+  ArtistFields: UserModel;
   GeneralUser: Omit<GeneralUser, 'likedTracks' | 'repostedTracks' | 'followers' | 'following'> & { likedTracks: Array<ResolversParentTypes['Track']>, repostedTracks: Array<ResolversParentTypes['Track']>, followers: Array<ResolversParentTypes['GeneralUserFields']>, following: Array<ResolversParentTypes['GeneralUserFields']> };
   Artist: Omit<Artist, 'likedTracks' | 'repostedTracks' | 'followers' | 'following' | 'uploadedTracks'> & { likedTracks: Array<ResolversParentTypes['Track']>, repostedTracks: Array<ResolversParentTypes['Track']>, followers: Array<ResolversParentTypes['GeneralUserFields']>, following: Array<ResolversParentTypes['GeneralUserFields']>, uploadedTracks: Array<ResolversParentTypes['Track']> };
   Mutation: {};
@@ -285,6 +298,18 @@ export type GeneralUserFieldsResolvers<ContextType = any, ParentType extends Res
 
 export type ArtistFieldsResolvers<ContextType = any, ParentType extends ResolversParentTypes['ArtistFields'] = ResolversParentTypes['ArtistFields']> = ResolversObject<{
   __resolveType: TypeResolveFn<'Artist' | 'RecordLabel', ParentType, ContextType>;
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  email?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  password?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  username?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  profileUrl?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  role?: Resolver<ResolversTypes['UserRole'], ParentType, ContextType>;
+  likedTracks?: Resolver<Array<ResolversTypes['Track']>, ParentType, ContextType>;
+  repostedTracks?: Resolver<Array<ResolversTypes['Track']>, ParentType, ContextType>;
+  followers?: Resolver<Array<ResolversTypes['GeneralUserFields']>, ParentType, ContextType>;
+  following?: Resolver<Array<ResolversTypes['GeneralUserFields']>, ParentType, ContextType>;
+  numFollowers?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  numFollowing?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   uploadedTracks?: Resolver<Array<ResolversTypes['Track']>, ParentType, ContextType>;
 }>;
 
@@ -328,7 +353,7 @@ export type MutationResolvers<ContextType = any, ParentType extends ResolversPar
 
 export type TrackResolvers<ContextType = any, ParentType extends ResolversParentTypes['Track'] = ResolversParentTypes['Track']> = ResolversObject<{
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
-  uploadedBy?: Resolver<ResolversTypes['GeneralUserFields'], ParentType, ContextType>;
+  uploadedBy?: Resolver<ResolversTypes['ArtistFields'], ParentType, ContextType>;
   title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   likedBy?: Resolver<Array<ResolversTypes['GeneralUserFields']>, ParentType, ContextType>;
   repostedBy?: Resolver<Array<ResolversTypes['GeneralUserFields']>, ParentType, ContextType>;

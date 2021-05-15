@@ -41,14 +41,14 @@ export const users: UserModel[] = [
 export const tracks: TrackModel[] = [
   {
     id: '1',
-    uploadedBy: '1',
+    uploadedBy: '2',
     title: 'Calcium - Blessed',
     numLikes: 10200,
     numReposts: 624,
   },
   {
     id: '2',
-    uploadedBy: '1',
+    uploadedBy: '3',
     title: 'Exquisite',
     numLikes: 10200,
     numReposts: 624,
