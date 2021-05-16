@@ -3,7 +3,7 @@ import { gql } from 'apollo-server';
 const schema = gql`
   type Query {
     allUsers(input: QueryAllUsersInput!): [GeneralUserFields!]!
-    allTracks: [Track!]!
+    allTracks(input: QueryAllTracksInput!): [Track!]!
   }
 
   type Mutation {
@@ -17,6 +17,7 @@ const schema = gql`
     password: String!
     username: String!
     profileUrl: String!
+    profileImageUrl: String!
     role: UserRole!
     likedTracks: [Track!]!
     repostedTracks: [Track!]!
@@ -32,6 +33,7 @@ const schema = gql`
     password: String!
     username: String!
     profileUrl: String!
+    profileImageUrl: String!
     role: UserRole!
     likedTracks: [Track!]!
     repostedTracks: [Track!]!
@@ -48,6 +50,7 @@ const schema = gql`
     password: String!
     username: String!
     profileUrl: String!
+    profileImageUrl: String!
     role: UserRole!
     likedTracks: [Track!]!
     repostedTracks: [Track!]!
@@ -63,6 +66,7 @@ const schema = gql`
     password: String!
     username: String!
     profileUrl: String!
+    profileImageUrl: String!
     role: UserRole!
     likedTracks: [Track!]!
     repostedTracks: [Track!]!
@@ -79,6 +83,7 @@ const schema = gql`
     password: String!
     username: String!
     profileUrl: String!
+    profileImageUrl: String!
     role: UserRole!
     likedTracks: [Track!]!
     repostedTracks: [Track!]!
@@ -93,6 +98,9 @@ const schema = gql`
     id: ID!
     uploadedBy: ArtistFields!
     title: String!
+    artworkImageUrl: String!
+    genre: Genre!
+    subgenre: Subgenre
     likedBy: [GeneralUserFields!]!
     repostedBy: [GeneralUserFields!]!
     numLikes: Int!
@@ -105,22 +113,44 @@ const schema = gql`
     RECORD_LABEL
   }
 
+  enum Genre {
+    HOUSE
+    DUBSTEP
+  }
+
+  enum Subgenre {
+    DEEP_HOUSE
+    BASS_HOUSE
+    MELODIC_DUBSTEP
+    RIDDIM
+  }
+
   input CreateUserInput {
     email: String!
     password: String!
     username: String!
     profileUrl: String!
+    profileImageUrl: String
     role: UserRole!
   }
 
   input CreateTrackInput {
     uploadedBy: ID!
     title: String!
+    artworkImageUrl: String
+    genre: Genre!
+    subgenre: Subgenre
   }
 
   input QueryAllUsersInput {
     queryString: String
     role: UserRole
+  }
+
+  input QueryAllTracksInput {
+    queryString: String
+    genre: Genre
+    subgenre: Subgenre
   }
 `;
 

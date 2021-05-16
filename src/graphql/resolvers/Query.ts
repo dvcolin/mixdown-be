@@ -26,6 +26,32 @@ const Query: QueryResolvers = {
     return users;
   },
   allTracks(parent, args, context, info) {
+    const {
+      input: { queryString, genre, subgenre },
+    } = args;
+    if (queryString || genre || subgenre) {
+      let filteredTracks = [...tracks];
+
+      if (queryString) {
+        filteredTracks = filteredTracks.filter((track) =>
+          track.title.toLowerCase().includes(queryString.toLowerCase())
+        );
+      }
+
+      if (genre) {
+        filteredTracks = filteredTracks.filter(
+          (track) => track.genre === genre
+        );
+      }
+
+      if (subgenre) {
+        filteredTracks = filteredTracks.filter(
+          (track) => track.subgenre === subgenre
+        );
+      }
+
+      return filteredTracks;
+    }
     return tracks;
   },
 };
